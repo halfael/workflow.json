@@ -1,0 +1,589 @@
+{
+  "input": {
+    "workflow": {
+      "1": {
+        "inputs": {
+          "text": "色调艳丽，过曝，静态，细节模糊不清，字幕，风格，作品，画作，画面，静止，整体发灰，最差质量，低质量，JPEG压缩残留，丑陋的，残缺的，多余的手指，画得不好的手部，画得不好的脸部，畸形的，毁容的，形态畸形的肢体，手指融合，静止不动的画面，杂乱的背景，三条腿，背景人很多，倒着走",
+          "clip": [
+            "2",
+            0
+          ]
+        },
+        "class_type": "CLIPTextEncode",
+        "_meta": {
+          "title": "CLIP Text Encode (Negative Prompt)"
+        }
+      },
+      "2": {
+        "inputs": {
+          "filename": "umt5_xxl_fp8_e4m3fn_scaled.safetensors"
+        },
+        "class_type": "CLIPLoader",
+        "_meta": {
+          "title": "CLIPLoader"
+        }
+      },
+      "3": {
+        "inputs": {
+          "filename": "wan_2.1_vae.safetensors"
+        },
+        "class_type": "VAELoader",
+        "_meta": {
+          "title": "VAELoader"
+        }
+      },
+      "4": {
+        "inputs": {
+          "filename": "clip_vision_h.safetensors"
+        },
+        "class_type": "CLIPVisionLoader",
+        "_meta": {
+          "title": "CLIPVisionLoader"
+        }
+      },
+      "9": {
+        "inputs": {
+          "text": "none",
+          "clip_vision": [
+            "4",
+            0
+          ],
+          "image": [
+            "10",
+            0
+          ]
+        },
+        "class_type": "CLIPVisionEncode",
+        "_meta": {
+          "title": "CLIPVisionEncode"
+        }
+      },
+      "10": {
+        "inputs": {
+          "image": "video_wan2_2_14B_animate_reference_image.png"
+        },
+        "class_type": "LoadImage",
+        "_meta": {
+          "title": "LoadImage"
+        }
+      },
+      "18": {
+        "inputs": {
+          "filename": "lightx2v_I2V_14B_480p_cfg_step_distill_rank64_bf16.safetensors",
+          "model": [
+            "20",
+            0
+          ]
+        },
+        "class_type": "LoraLoaderModelOnly",
+        "_meta": {
+          "title": "LoraLoaderModelOnly"
+        }
+      },
+      "19": {
+        "inputs": {
+          "filename": "video/ComfyUI",
+          "video": [
+            "232",
+            0
+          ]
+        },
+        "class_type": "SaveVideo",
+        "_meta": {
+          "title": "SaveVideo"
+        }
+      },
+      "20": {
+        "inputs": {
+          "filename": "Wan2_2-Animate-14B_fp8_e4m3fn_scaled_KJ.safetensors"
+        },
+        "class_type": "UNETLoader",
+        "_meta": {
+          "title": "UNETLoader"
+        }
+      },
+      "21": {
+        "inputs": {
+          "text": "The character is dancing in the room",
+          "clip": [
+            "2",
+            0
+          ]
+        },
+        "class_type": "CLIPTextEncode",
+        "_meta": {
+          "title": "CLIP Text Encode (Positive Prompt)"
+        }
+      },
+      "23": {
+        "inputs": {
+          "video": [
+            "145",
+            0
+          ]
+        },
+        "class_type": "GetVideoComponents",
+        "_meta": {
+          "title": "GetVideoComponents"
+        }
+      },
+      "60": {
+        "inputs": {
+          "value": 8,
+          "model": [
+            "99",
+            0
+          ]
+        },
+        "class_type": "ModelSamplingSD3",
+        "_meta": {
+          "title": "ModelSamplingSD3"
+        }
+      },
+      "99": {
+        "inputs": {
+          "filename": "WanAnimate_relight_lora_fp16.safetensors",
+          "model": [
+            "18",
+            0
+          ]
+        },
+        "class_type": "LoraLoaderModelOnly",
+        "_meta": {
+          "title": "LoraLoaderModelOnly"
+        }
+      },
+      "100": {
+        "inputs": {
+          "text": "disable",
+          "image": [
+            "212",
+            0
+          ],
+          "resolution": [
+            "158",
+            0
+          ]
+        },
+        "class_type": "DWPreprocessor",
+        "_meta": {
+          "title": "DWPreprocessor"
+        }
+      },
+      "101": {
+        "inputs": {
+          "text": "enable",
+          "image": [
+            "212",
+            0
+          ],
+          "resolution": [
+            "158",
+            0
+          ]
+        },
+        "class_type": "DWPreprocessor",
+        "_meta": {
+          "title": "DWPreprocessor"
+        }
+      },
+      "107": {
+        "inputs": {
+          "value": true,
+          "sam2_model": [
+            "108",
+            0
+          ],
+          "image": [
+            "212",
+            0
+          ],
+          "coordinates_positive": [
+            "229",
+            0
+          ]
+        },
+        "class_type": "Sam2Segmentation",
+        "_meta": {
+          "title": "Sam2Segmentation"
+        }
+      },
+      "108": {
+        "inputs": {
+          "filename": "sam2_hiera_base_plus.safetensors"
+        },
+        "class_type": "DownloadAndLoadSAM2Model",
+        "_meta": {
+          "title": "DownloadAndLoadSAM2Model"
+        }
+      },
+      "124": {
+        "inputs": {
+          "images": [
+            "275",
+            0
+          ]
+        },
+        "class_type": "PreviewImage",
+        "_meta": {
+          "title": "PreviewImage"
+        }
+      },
+      "127": {
+        "inputs": {
+          "mask": [
+            "276",
+            0
+          ]
+        },
+        "class_type": "MaskPreview",
+        "_meta": {
+          "title": "MaskPreview"
+        }
+      },
+      "145": {
+        "inputs": {
+          "filename": "video_wan2_2_14B_animate_original_video.mp4"
+        },
+        "class_type": "LoadVideo",
+        "_meta": {
+          "title": "LoadVideo"
+        }
+      },
+      "158": {
+        "inputs": {
+          "value": 512,
+          "original_image": [
+            "23",
+            0
+          ],
+          "image_gen_width": [
+            "159",
+            0
+          ],
+          "image_gen_height": [
+            "160",
+            0
+          ]
+        },
+        "class_type": "PixelPerfectResolution",
+        "_meta": {
+          "title": "PixelPerfectResolution"
+        }
+      },
+      "159": {
+        "inputs": {
+          "value": 640
+        },
+        "class_type": "PrimitiveInt",
+        "_meta": {
+          "title": "Width"
+        }
+      },
+      "160": {
+        "inputs": {
+          "value": 640
+        },
+        "class_type": "PrimitiveInt",
+        "_meta": {
+          "title": "Height"
+        }
+      },
+      "212": {
+        "inputs": {
+          "upscale_method": "lanczos",
+          "width": [
+            "159",
+            0
+          ],
+          "height": [
+            "160",
+            0
+          ],
+          "crop": "center",
+          "image": [
+            "23",
+            0
+          ]
+        },
+        "class_type": "ImageScale",
+        "_meta": {
+          "title": "ImageScale"
+        }
+      },
+      "229": {
+        "inputs": {
+          "text": "{\"positive\":[{\"x\":256,\"y\":256}],\"negative\":[{\"x\":0,\"y\":0}]}",
+          "bg_image": [
+            "212",
+            0
+          ]
+        },
+        "class_type": "PointsEditor",
+        "_meta": {
+          "title": "PointsEditor"
+        }
+      },
+      "232": {
+        "inputs": {
+          "value": 640,
+          "model": [
+            "60",
+            0
+          ],
+          "audio": [
+            "23",
+            1
+          ],
+          "vae": [
+            "3",
+            0
+          ],
+          "positive": [
+            "21",
+            0
+          ],
+          "negative": [
+            "1",
+            0
+          ],
+          "clip_vision_output": [
+            "9",
+            0
+          ],
+          "reference_image": [
+            "10",
+            0
+          ],
+          "face_video": [
+            "100",
+            0
+          ],
+          "pose_video": [
+            "101",
+            0
+          ],
+          "background_video": [
+            "275",
+            0
+          ],
+          "character_mask": [
+            "276",
+            0
+          ],
+          "width": [
+            "159",
+            0
+          ],
+          "height": [
+            "160",
+            0
+          ]
+        },
+        "class_type": "90db3fa1-b7fd-4c97-90a4-3e9533589dce",
+        "_meta": {
+          "title": "90db3fa1-b7fd-4c97-90a4-3e9533589dce"
+        }
+      },
+      "242": {
+        "inputs": {
+          "value": 1280,
+          "model": [
+            "60",
+            0
+          ],
+          "vae": [
+            "3",
+            0
+          ],
+          "audio": [
+            "23",
+            1
+          ],
+          "image1": [
+            "232",
+            1
+          ],
+          "positive": [
+            "21",
+            0
+          ],
+          "negative": [
+            "1",
+            0
+          ],
+          "clip_vision_output": [
+            "9",
+            0
+          ],
+          "reference_image": [
+            "10",
+            0
+          ],
+          "face_video": [
+            "100",
+            0
+          ],
+          "pose_video": [
+            "101",
+            0
+          ],
+          "background_video": [
+            "275",
+            0
+          ],
+          "character_mask": [
+            "276",
+            0
+          ],
+          "width": [
+            "159",
+            0
+          ],
+          "video_frame_offset": [
+            "232",
+            2
+          ]
+        },
+        "class_type": "975ed319-ca2b-461e-b42a-8e2704ba902f",
+        "_meta": {
+          "title": "975ed319-ca2b-461e-b42a-8e2704ba902f"
+        }
+      },
+      "243": {
+        "inputs": {
+          "filename": "video/ComfyUI",
+          "video": [
+            "242",
+            2
+          ]
+        },
+        "class_type": "SaveVideo",
+        "_meta": {
+          "title": "SaveVideo"
+        }
+      },
+      "274": {
+        "inputs": {
+          "value": 10,
+          "mask": [
+            "107",
+            0
+          ]
+        },
+        "class_type": "GrowMask",
+        "_meta": {
+          "title": "GrowMask"
+        }
+      },
+      "275": {
+        "inputs": {
+          "text": "0, 0, 0",
+          "image": [
+            "212",
+            0
+          ],
+          "mask": [
+            "276",
+            0
+          ]
+        },
+        "class_type": "DrawMaskOnImage",
+        "_meta": {
+          "title": "DrawMaskOnImage"
+        }
+      },
+      "276": {
+        "inputs": {
+          "value": 32,
+          "masks": [
+            "274",
+            0
+          ]
+        },
+        "class_type": "BlockifyMask",
+        "_meta": {
+          "title": "BlockifyMask"
+        }
+      },
+      "277": {
+        "inputs": {
+          "filename": "video/ComfyUI",
+          "video": [
+            "278",
+            2
+          ]
+        },
+        "class_type": "SaveVideo",
+        "_meta": {
+          "title": "SaveVideo"
+        }
+      },
+      "278": {
+        "inputs": {
+          "value": 1280,
+          "model": [
+            "60",
+            0
+          ],
+          "vae": [
+            "3",
+            0
+          ],
+          "audio": [
+            "23",
+            1
+          ],
+          "image1": [
+            "242",
+            0
+          ],
+          "positive": [
+            "21",
+            0
+          ],
+          "negative": [
+            "1",
+            0
+          ],
+          "clip_vision_output": [
+            "9",
+            0
+          ],
+          "reference_image": [
+            "10",
+            0
+          ],
+          "face_video": [
+            "100",
+            0
+          ],
+          "pose_video": [
+            "101",
+            0
+          ],
+          "background_video": [
+            "275",
+            0
+          ],
+          "character_mask": [
+            "276",
+            0
+          ],
+          "width": [
+            "159",
+            0
+          ],
+          "video_frame_offset": [
+            "242",
+            1
+          ]
+        },
+        "class_type": "063b0ee8-c72b-442b-8029-dd3d5f4b6650",
+        "_meta": {
+          "title": "063b0ee8-c72b-442b-8029-dd3d5f4b6650"
+        }
+      }
+    }
+  }
+}
